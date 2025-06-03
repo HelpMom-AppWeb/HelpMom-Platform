@@ -1,4 +1,4 @@
-namespace webexperts.helpmom.platform;
+namespace webexperts.helpmom.platform.API;
 
 public class WeatherForecast
 {

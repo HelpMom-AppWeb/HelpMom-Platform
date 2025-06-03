@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace webexperts.helpmom.platform.Controllers;
+namespace webexperts.helpmom.platform.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

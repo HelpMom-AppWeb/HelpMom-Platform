@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webexperts.helpmom.platform", "webexperts.helpmom.platform\webexperts.helpmom.platform.csproj", "{43178232-4738-437F-A7CB-F65810DB03A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webexperts.helpmom.platform.API", "webexperts.helpmom.platform.API\webexperts.helpmom.platform.API.csproj", "{43178232-4738-437F-A7CB-F65810DB03A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
