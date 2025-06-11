@@ -1,0 +1,3 @@
+valueobject - patientid y doctorid
+entidades message
+anadir createdadd pa›ra mostrar fecha 
