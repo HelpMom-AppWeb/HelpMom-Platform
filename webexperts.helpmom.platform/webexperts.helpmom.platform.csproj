@@ -10,4 +10,10 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Appointments\Domain\Model\entities\" />
+      <Folder Include="Appointments\Domain\Model\Queries\" />
+      <Folder Include="Appointments\Domain\Model\ValueObjects\" />
+    </ItemGroup>
+
 </Project>
