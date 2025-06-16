@@ -1,3 +1,5 @@
+using webexperts.helpmom.platform.Appointments.Domain.Model.Aggregates;
+
 public interface IAppointmentRepository
 {
     Task<Appointment> GetByIdAsync(string id);
