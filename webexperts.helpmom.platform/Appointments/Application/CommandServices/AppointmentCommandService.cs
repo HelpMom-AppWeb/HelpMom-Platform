@@ -1,6 +1,7 @@
 ﻿using webexperts.helpmom.platform.Appointments.Application.Commands;
+namespace webexperts.helpmom.platform.Appointments.Application;
 
-public class AppointmentCommandService : IAppointmentCommandService
+public class AppointmentCommandService 
 {
     private readonly IAppointmentRepository _repository;
 
