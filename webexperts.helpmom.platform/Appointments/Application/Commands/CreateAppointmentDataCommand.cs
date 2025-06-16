@@ -1,4 +1,5 @@
-﻿namespace webexperts.helpmom.platform.Appointments.Application.Commands;
+﻿
+namespace webexperts.helpmom.platform.Appointments.Application.Commands;
 
 public class CreateAppointmentDataCommand : IRequest<Appointment>
 {
@@ -10,8 +11,4 @@ public class CreateAppointmentDataCommand : IRequest<Appointment>
     public string Description { get; set; }
     public int PatientId { get; set; }
     public string PatientName { get; set; }
-}
-
-public interface IRequest<T>
-{
 }
