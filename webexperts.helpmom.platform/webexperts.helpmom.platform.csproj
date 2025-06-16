@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Chat\Application\Internal\" />
+      <Folder Include="Chat\Persistence\" />
     </ItemGroup>
 
 </Project>

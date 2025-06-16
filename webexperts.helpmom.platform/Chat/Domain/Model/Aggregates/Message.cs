@@ -5,24 +5,26 @@ namespace webexperts.helpmom.platform.Chat.Domain.Model.Aggregates
 {
     public class Message
     {
-        public int Id { get; private set; }
-
-        public From From { get; private set; }
-
         public string Text { get; private set; }
+        public long Timestamp { get; private set; } // ← DEBE ser long
+        public From From { get; private set; }
+        public int PatientId { get; private set; }
 
-        public long Timestamp { get; private set; }
-
-        public string PatientId { get; private set; }
-
-        public Message(From from, string text, long timestamp, string patientId)
+        public Message(string text, long timestamp, From from, int patientId)
         {
-            From = from ?? throw new ArgumentNullException(nameof(from));
-            Text = text ?? throw new ArgumentNullException(nameof(text));
+            Text = text;
             Timestamp = timestamp;
-            PatientId = patientId ?? throw new ArgumentNullException(nameof(patientId));
+            From = from;
+            PatientId = patientId;
         }
 
-        private Message() { }
+
+
+        private Message()
+        {
+        }
     }
 }
+
+      
+
