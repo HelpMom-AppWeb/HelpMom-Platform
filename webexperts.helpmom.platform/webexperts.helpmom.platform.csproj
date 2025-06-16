@@ -12,13 +12,6 @@
 
     <ItemGroup>
       <Folder Include="Chat\Application\Internal\" />
-      <Folder Include="Chat\Domain\Model\Commands\" />
-      <Folder Include="Chat\Domain\Model\Queries\" />
-      <Folder Include="Chat\Domain\Model\ValueObjects\" />
-      <Folder Include="Chat\Domain\Repositories\" />
-      <Folder Include="Chat\Domain\Services\" />
-      <Folder Include="Chat\Infrastructure\Persistence\EFC\Repositories\" />
-      <Folder Include="Chat\Interfaces\" />
     </ItemGroup>
 
 </Project>
