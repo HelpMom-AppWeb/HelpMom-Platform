@@ -4,7 +4,7 @@ namespace webexperts.helpmom.platform.Chat.Domain.Repositories;
 
 public interface IMessageRepository
 {
-    Task<IEnumerable<Message>> GetMessagesByPatientIdAsync(int patientId);
-    Task<Message> SaveAsync(Message message);
-    Task DeleteAsync(int id);
+    Task<Message> CreateAsync(Message message);
+    Task<IEnumerable<Message>> ListByPatientIdAsync(int patientId);
+    Task DeleteAsync(int messageId);
 }
