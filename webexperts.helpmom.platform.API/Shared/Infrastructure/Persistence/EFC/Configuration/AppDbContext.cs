@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
+using webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 namespace webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -16,6 +17,10 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        
+        // PatientManagement Context
+        builder.ApplyPatientManagementConfiguration();
+
         
         builder.UseSnakeCaseNamingConvention();
     }
