@@ -66,7 +66,7 @@
                             OperationId = "GetMedicationsByPrescriptionId")]
                         [SwaggerResponse(200, "The medications were found", typeof(IEnumerable<MedicationResource>))]
                         [SwaggerResponse(404, "The prescription was not found")]
-                        public async Task<ActionResult> GetMedicationsByPrescriptionId(int prescriptionId)
+                        public async Task<ActionResult> GetMedicationsByPrescriptionId(Guid prescriptionId)
                         {
                             var prescriptionExistsQuery = new GetPrescriptionByIdQuery(prescriptionId);
                             var prescription = await _prescriptionQueryService.Handle(prescriptionExistsQuery);
