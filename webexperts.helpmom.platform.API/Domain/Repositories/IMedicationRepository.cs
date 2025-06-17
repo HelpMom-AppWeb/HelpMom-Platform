@@ -7,6 +7,6 @@ public interface IMedicationRepository : IBaseRepository<Medication>
 {
     Task<IEnumerable<Medication>> FindByPrescriptionIdAsync(Guid prescriptionId);
     Task<Medication?> FindByNameAndPrescriptionIdAsync(string name, Guid prescriptionId);
-    Task<bool> ExistsInPrescriptionAsync(string name, Guid prescriptionId);
+    Task<bool> ExistsInPrescriptionAsync(Guid PrescriptionId, Guid MedicationId);
     Task<Medication?> FindByMedicationIdAsync(Guid medicationId);
 }
