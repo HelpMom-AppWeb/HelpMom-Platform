@@ -9,21 +9,21 @@ public class MedicationQueryServices (IMedicationRepository medicationRepository
 {
     public Task<Medication?> Handle(GetMedicationByIdQuery query)
     {
-        throw new NotImplementedException();
+        return medicationRepository.FindByIdAsync(query.Id);
     }
 
     public Task<IEnumerable<Medication>> Handle(GetAllMedicationsQuery query)
     {
-        throw new NotImplementedException();
+        return medicationRepository.ListAsync();
     }
 
     public Task<IEnumerable<Medication>> Handle(GetMedicationsByPrescriptionIdQuery query)
     {
-        throw new NotImplementedException();
+        return medicationRepository.FindByPrescriptionIdAsync(query.PrescriptionId);
     }
 
     public Task<bool> Handle(CheckMedicationExistsInPrescriptionQuery query)
     {
-        throw new NotImplementedException();
+        return medicationRepository.ExistsInPrescriptionAsync(query.MedicationId, query.PrescriptionId);
     }
 }
