@@ -1,3 +1,3 @@
 namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Queries;
 
-public record GetAllPatientsByDoctorIdQuery();
+public record GetBabyByIdQuery();
