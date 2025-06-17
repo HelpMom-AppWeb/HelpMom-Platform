@@ -1,9 +1,29 @@
-﻿using webexperts.helpmom.platform.API.Domain.Repositories;
+﻿using webexperts.helpmom.platform.API.Domain.Model.Entities;
+using webexperts.helpmom.platform.API.Domain.Model.Queries;
+using webexperts.helpmom.platform.API.Domain.Repositories;
 using webexperts.helpmom.platform.API.Domain.Services;
 
 namespace webexperts.helpmom.platform.API.Application.Internal.QueryServices;
 
-public class MedicationQueryServices (IMedicationRepository medicationRepository) : IMedicationQueryServices
+public class MedicationQueryServices (IMedicationRepository medicationRepository) : IMedicationQueryService
 {
-    
+    public Task<Medication?> Handle(GetMedicationByIdQuery query)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<Medication>> Handle(GetAllMedicationsQuery query)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<Medication>> Handle(GetMedicationsByPrescriptionIdQuery query)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> Handle(CheckMedicationExistsInPrescriptionQuery query)
+    {
+        throw new NotImplementedException();
+    }
 }
