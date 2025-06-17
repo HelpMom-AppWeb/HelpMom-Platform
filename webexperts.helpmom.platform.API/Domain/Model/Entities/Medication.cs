@@ -1,4 +1,7 @@
-﻿namespace webexperts.helpmom.platform.API.Domain.Model.Entities;
+﻿using webexperts.helpmom.platform.API.Domain.Model.Commands;
+using webexperts.helpmom.platform.API.Domain.Model.ValueObjects;
+
+namespace webexperts.helpmom.platform.API.Domain.Model.Entities;
             
             public class Medication
             {
@@ -56,5 +59,19 @@
                     Duration = duration;
                     Presentation = presentation;
                     Manufacturer = manufacturer;
+                }
+                public Medication (CreateMedicationCommand command)
+                {
+                   
+                    Name = command.Name;
+                    Concentration = command.Concentration;
+                    Quantity = command.Quantity;
+                    Dose = command.Dose;
+                    Via = command.Via;
+                    Frequency = command.Frequency;
+                    Duration = command.Duration;
+                    PrescriptionId = command.PrescriptionId;
+                    Presentation = command.Presentation;
+                    Manufacturer = command.Manufacturer;
                 }
             }
