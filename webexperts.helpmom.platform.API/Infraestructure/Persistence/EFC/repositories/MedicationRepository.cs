@@ -23,6 +23,12 @@ public class MedicationRepository : BaseRepository<Medication>, IMedicationRepos
             .FirstOrDefaultAsync(m => m.Name.ToLower() == name.ToLower() && m.PrescriptionId == prescriptionId);
     }
 
+    public Task<bool> ExistsInPrescriptionAsync(Guid PrescriptionId, Guid MedicationId)
+    {
+        return Context.Set<Medication>()
+            .AnyAsync(m => m.Id == MedicationId && m.PrescriptionId == PrescriptionId);
+    }
+
     public async Task<bool> ExistsInPrescriptionAsync(string name, Guid prescriptionId)
     {
         return await Context.Set<Medication>()
