@@ -16,7 +16,6 @@ public class CreateMessageCommandService
         _domainService = domainService;
     }
 
-    
     public async Task<Message?> Handle(CreateMessageCommand command)
     {
         var message = new Message(
