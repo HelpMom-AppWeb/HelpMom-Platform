@@ -14,7 +14,6 @@
       <Folder Include="Appointments\Domain\Model\entities\" />
       <Folder Include="Appointments\Domain\Model\Queries\" />
       <Folder Include="Appointments\Domain\Model\ValueObjects\" />
-      <Folder Include="Controllers\" />
     </ItemGroup>
 
 </Project>
