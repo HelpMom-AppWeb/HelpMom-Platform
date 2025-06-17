@@ -28,4 +28,10 @@ public class MedicationRepository : BaseRepository<Medication>, IMedicationRepos
         return await Context.Set<Medication>()
             .AnyAsync(m => m.Name.ToLower() == name.ToLower() && m.PrescriptionId == prescriptionId);
     }
+
+    public async Task<Medication?> FindByMedicationIdAsync(Guid medicationId)
+    {
+        return await Context.Set<Medication>()
+            .FirstOrDefaultAsync(m => m.Id == medicationId);
+    }
 }
