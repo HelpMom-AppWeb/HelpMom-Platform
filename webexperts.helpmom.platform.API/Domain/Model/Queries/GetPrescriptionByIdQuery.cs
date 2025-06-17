@@ -2,9 +2,9 @@
 
 public class GetPrescriptionByIdQuery
 {
-    public int PrescriptionId { get; }
+    public Guid PrescriptionId { get; }
 
-    public GetPrescriptionByIdQuery(int prescriptionId)
+    public GetPrescriptionByIdQuery(Guid prescriptionId)
     {
         PrescriptionId = prescriptionId;
     }
