@@ -1,6 +1,4 @@
 ﻿using webexperts.helpmom.platform.Appointments.Application.Commands;
-using webexperts.helpmom.platform.Appointments.Domain.Model.Aggregates;
-
 namespace webexperts.helpmom.platform.Appointments.Application;
 
 public class AppointmentCommandService 
@@ -17,6 +15,7 @@ public class AppointmentCommandService
         var appointment = Appointment.Create(
             command.DoctorId,
             command.DoctorName,
+            command.Specialty,
             command.Date,
             command.Time,
             command.Description,
