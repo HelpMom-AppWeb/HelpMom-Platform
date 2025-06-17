@@ -18,8 +18,17 @@ public class MedicationCommandServices (IMedicationRepository medicationReposito
         return medication;
     }
 
-    public Task<bool> Handle(DeleteMedicationCommand command)
+    public async Task<bool> Handle(DeleteMedicationCommand command)
     {
-        throw new NotImplementedException();
+        var medication = await medicationRepository.FindByMedicationIdAsync(command.MedicationId);
+        if (medication is null)
+        {
+            return false;
+        }
+        
+        medicationRepository.Remove(medication);
+        await unitOfWork.CompleteAsync();
+        
+        return true;
     }
 }
