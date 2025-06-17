@@ -1,9 +1,10 @@
+namespace webexperts.helpmom.platform.Appointments.Domain.Model.Aggregates;
+
 public class Appointment
 {
     public string Id { get; private set; }
     public int DoctorId { get; private set; }
     public string DoctorName { get; private set; }
-    public string Specialty { get; private set; }
     public DateTime Date { get; private set; }
     public TimeSpan Time { get; private set; }
     public string Description { get; private set; }
@@ -15,8 +16,7 @@ public class Appointment
 
     // Método de creación
     public static Appointment Create(
-        int doctorId, string doctorName, string specialty,
-        DateTime date, TimeSpan time, string description,
+        int doctorId, string doctorName, DateTime date, TimeSpan time, string description,
         int patientId, string patientName)
     {
         // Validaciones
@@ -31,7 +31,6 @@ public class Appointment
             Id = Guid.NewGuid().ToString(),
             DoctorId = doctorId,
             DoctorName = doctorName,
-            Specialty = specialty,
             Date = date,
             Time = time,
             Description = description,
