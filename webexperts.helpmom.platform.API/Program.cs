@@ -1,4 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using webexperts.helpmom.platform.API.Appointments.Application.Internal.CommandServices;
+using webexperts.helpmom.platform.API.Appointments.Application.Internal.QueryServices;
+using webexperts.helpmom.platform.API.Appointments.Domain.Repositories;
+using webexperts.helpmom.platform.API.Appointments.Domain.Services;
 using webexperts.helpmom.platform.API.HealthMonitoring.Application.Internal.CommandServices;
 using webexperts.helpmom.platform.API.HealthMonitoring.Application.Internal.QueryServices;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Repositories;
@@ -44,6 +48,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddSwaggerGen(options => { options.EnableAnnotations(); });
 
 // Dependency Injection
+builder.Services.AddScoped<IAppointmentCommandService, AppointmentCommandService>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IAppointmentQueryService, AppointmentQueryService>();
 
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

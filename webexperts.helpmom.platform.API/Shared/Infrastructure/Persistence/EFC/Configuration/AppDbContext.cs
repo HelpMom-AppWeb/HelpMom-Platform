@@ -1,4 +1,3 @@
-﻿using Microsoft.EntityFrameworkCore;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
@@ -27,5 +26,15 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<HealthData>().Property(f => f.PatientId).IsRequired();
         
         builder.UseSnakeCaseNamingConvention();
+        
+        builder.Entity<Appointment>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                .HasColumnName("id")
+                .ValueGeneratedOnAdd(); 
+        });
     }
+    public DbSet<Appointment> Appointments { get; set; }
 }

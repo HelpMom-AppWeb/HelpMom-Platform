@@ -4,6 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <AssemblyName>webexperts.helpmom.platform.API</AssemblyName>
+        <RootNamespace>webexperts.helpmom.platform.API</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
