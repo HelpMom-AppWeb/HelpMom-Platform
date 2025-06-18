@@ -9,22 +9,20 @@ public partial class Patient
     public int Id { get; }
     public ProfileId ProfileId { get; set; }
     public string Phone { get; set; }
-    public Baby Baby { get; set; }
-    
-    public int BabyId { get; set; }
-    public Doctor AssignedDoctor { get; set; }
+    public Baby Baby { get; internal set; }
+    public Doctor AssignedDoctor { get; internal set; }
     public int AssignedDoctorId { get; set; }
 
     public Patient()
     {
-        // Parameterless constructor for EF Core
+        Phone = string.Empty;
     }
 
     public Patient(CreatePatientCommand command)
     {
         ProfileId = new ProfileId(command.ProfileId);
         Phone = command.Phone;
-        BabyId = command.BabyId;
+        Baby = new Baby(command.BabyName, command.BabyDateOfBirth, command.BabyGender);
         AssignedDoctorId = command.AssignedDoctorId;
     }
 }
