@@ -49,10 +49,13 @@ builder.Services.AddSwaggerGen(options => { options.EnableAnnotations(); });
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-//Medication 
+// Medication 
 builder.Services.AddScoped<IMedicationQueryService, MedicationQueryServices>();
 builder.Services.AddScoped<IMedicationCommandService, MedicationCommandServices>();
 builder.Services.AddScoped<IMedicationRepository, MedicationRepository>();
+
+// Prescription
+builder.Services.AddScoped<IPrescriptionQueryService, PrescriptionQueryService>();
 
 var app = builder.Build();
 
