@@ -1,4 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using webexperts.helpmom.platform.API.PatientManagement.Application.Internal.CommandServices;
+using webexperts.helpmom.platform.API.PatientManagement.Application.Internal.QueryServices;
+using webexperts.helpmom.platform.API.PatientManagement.Domain.Repositories;
+using webexperts.helpmom.platform.API.PatientManagement.Domain.Services;
+using webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persistence.EFC.Repositories;
 using webexperts.helpmom.platform.API.Shared.Domain.Repositories;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -42,6 +47,14 @@ builder.Services.AddSwaggerGen(options => { options.EnableAnnotations(); });
 
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Patient Management Bounded Context
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IPatientCommandService, PatientCommandService>();
+builder.Services.AddScoped<IPatientQueryService, PatientQueryService>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IDoctorCommandService, DoctorCommandService>();
+builder.Services.AddScoped<IDoctorQueryService, DoctorQueryService>();
 
 var app = builder.Build();
 
