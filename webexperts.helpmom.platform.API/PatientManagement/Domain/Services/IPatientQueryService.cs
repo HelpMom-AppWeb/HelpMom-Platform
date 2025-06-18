@@ -5,7 +5,7 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Services;
 
 public interface IPatientQueryService
 {
-    Task<Patient> Handle(GetPatientByIdQuery query);
+    Task<Patient?> Handle(GetPatientByIdQuery query);
     Task<IEnumerable<Patient>> Handle(GetAllPatientsByAssignedDoctorIdQuery query);
-    Task<IEnumerable<Patient>> Handle(GetPatientByProfileIdQuery query);
+    Task<Patient?> Handle(GetPatientByProfileIdQuery query);
 }

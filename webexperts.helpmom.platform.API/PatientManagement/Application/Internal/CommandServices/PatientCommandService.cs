@@ -9,7 +9,7 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Application.Internal
 public class PatientCommandService(IPatientRepository patientRepository, IUnitOfWork unitOfWork)
     : IPatientCommandService
 {
-    public async Task<Patient> Handle(CreatePatientCommand command)
+    public async Task<Patient?> Handle(CreatePatientCommand command)
     {
         var patient = new Patient(command);
         await patientRepository.AddAsync(patient);

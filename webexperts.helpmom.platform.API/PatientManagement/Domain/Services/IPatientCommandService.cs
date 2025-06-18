@@ -5,5 +5,5 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Services;
 
 public interface IPatientCommandService
 {
-    public Task<Patient> Handle(CreatePatientCommand command);
+    public Task<Patient?> Handle(CreatePatientCommand command);
 }
