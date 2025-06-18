@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.PatientManagement.Domain.Repositories;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -7,5 +8,9 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persi
 
 public class DoctorRepository(AppDbContext context) : BaseRepository<Doctor>(context), IDoctorRepository
 {
-    
+    public async Task<Doctor?> FindByProfileIdAsync(int profileId)
+    {
+        return await Context.Set<Doctor>()
+            .FirstOrDefaultAsync(doctor => doctor.ProfileId.Id == profileId);
+    }
 }

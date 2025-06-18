@@ -6,4 +6,6 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Repositories;
 public interface IPatientRepository : IBaseRepository<Patient>
 {
     Task<IEnumerable<Patient>> FindByAssignedDoctorIdAsync(int assignedDoctorId);
+    
+    Task<Patient?> FindByProfileIdAsync(int profileId);
 }
