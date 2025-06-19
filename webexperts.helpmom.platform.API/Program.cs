@@ -61,6 +61,14 @@ builder.Services.AddScoped<IHealthDataQueryService, HealthDataQueryService>();
 builder.Services.AddScoped<IHealthMonitoringRepository, HealthDataRepository>();
 
 
+// Medication 
+builder.Services.AddScoped<IMedicationQueryService, MedicationQueryServices>();
+builder.Services.AddScoped<IMedicationCommandService, MedicationCommandServices>();
+builder.Services.AddScoped<IMedicationRepository, MedicationRepository>();
+
+// Prescription
+builder.Services.AddScoped<IPrescriptionQueryService, PrescriptionQueryService>();
+
 var app = builder.Build();
 
 // Verify if the database exists and create it if it doesn't
