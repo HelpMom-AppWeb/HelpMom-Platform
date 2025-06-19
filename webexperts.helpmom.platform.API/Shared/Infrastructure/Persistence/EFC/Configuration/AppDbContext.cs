@@ -1,4 +1,6 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
+using Microsoft.EntityFrameworkCore;
+using webexperts.helpmom.platform.API.Appointments.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
