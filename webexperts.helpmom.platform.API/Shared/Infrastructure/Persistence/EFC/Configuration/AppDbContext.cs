@@ -1,4 +1,4 @@
-﻿using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
+using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 using webexperts.helpmom.platform.API.Appointments.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.Domain.Model.Entities;
