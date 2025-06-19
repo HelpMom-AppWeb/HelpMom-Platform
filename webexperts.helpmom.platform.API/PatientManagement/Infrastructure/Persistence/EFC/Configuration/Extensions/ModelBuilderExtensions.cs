@@ -11,11 +11,9 @@ public static class ModelBuilderExtensions
         // Patient Management Context
         builder.Entity<Doctor>().HasKey(d => d.Id);
         builder.Entity<Doctor>().Property(d => d.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Doctor>().Property(d => d.ProfileId);
         
         builder.Entity<Patient>().HasKey(p => p.Id);
         builder.Entity<Patient>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Patient>().Property(p => p.ProfileId);
         builder.Entity<Patient>().Property(p => p.Phone).HasMaxLength(15);
         builder.Entity<Patient>().Property(p => p.AssignedDoctorId);
 
