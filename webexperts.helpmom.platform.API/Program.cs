@@ -5,6 +5,9 @@ using webexperts.helpmom.platform.API.Appointments.Application.Internal.CommandS
 using webexperts.helpmom.platform.API.Appointments.Application.Internal.QueryServices;
 using webexperts.helpmom.platform.API.Appointments.Domain.Repositories;
 using webexperts.helpmom.platform.API.Appointments.Domain.Services;
+using webexperts.helpmom.platform.API.Chat.Domain.Repositories;
+using webexperts.helpmom.platform.API.Chat.Domain.Services;
+using webexperts.helpmom.platform.API.Chat.Infraestructure.Persistence.Repositories;
 using webexperts.helpmom.platform.API.Domain.Repositories;
 using webexperts.helpmom.platform.API.Domain.Services;
 using webexperts.helpmom.platform.API.HealthMonitoring.Application.Internal.CommandServices;
@@ -59,13 +62,14 @@ builder.Services.AddScoped<IAppointmentQueryService, AppointmentQueryService>();
 
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 // Health Monitoring Bounded Context
 builder.Services.AddScoped<IHealthDataCommandService, HealthDataCommandService>();
 builder.Services.AddScoped<IHealthDataQueryService, HealthDataQueryService>();
 builder.Services.AddScoped<IHealthMonitoringRepository, HealthDataRepository>();
 
+//CHAT 
 
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 // Medication 
 builder.Services.AddScoped<IMedicationQueryService, MedicationQueryServices>();
 builder.Services.AddScoped<IMedicationCommandService, MedicationCommandServices>();
