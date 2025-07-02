@@ -7,5 +7,4 @@ public interface IPatientRepository : IBaseRepository<Patient>
 {
     Task<IEnumerable<Patient>> FindByAssignedDoctorIdAsync(int assignedDoctorId);
     
-    Task<Patient?> FindByProfileIdAsync(int profileId);
 }

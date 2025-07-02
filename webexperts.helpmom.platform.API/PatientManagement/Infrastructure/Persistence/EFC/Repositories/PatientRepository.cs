@@ -15,11 +15,5 @@ public class PatientRepository(AppDbContext context) : BaseRepository<Patient>(c
             .Where(patient => patient.AssignedDoctorId == assignedDoctorId)
             .ToListAsync();
     }
-
-    public async Task<Patient?> FindByProfileIdAsync(int profileId)
-    {
-        return await Context.Set<Patient>()
-            .FirstOrDefaultAsync(patient => patient.ProfileId.Id == profileId);
-    }
     
 }

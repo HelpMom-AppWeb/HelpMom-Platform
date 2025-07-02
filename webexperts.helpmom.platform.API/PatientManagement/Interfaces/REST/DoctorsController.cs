@@ -31,21 +31,6 @@ public class DoctorsController(IDoctorCommandService doctorCommandService,
         return Ok(resource);
     }
     
-    [HttpGet("{profileId:int}")]
-    [SwaggerOperation(
-        Summary = "Gets a doctor by its profile ID",
-        Description = "Get a doctor by given profile ID.")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Doctor found", typeof(DoctorResource))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "Doctor not found")]
-    public async Task<IActionResult> GetDoctorByProfileId(int profileId)
-    {
-        var getDoctorByProfileIdQuery = new GetDoctorByProfileIdQuery(profileId);
-        var doctor = await doctorQueryService.Handle(getDoctorByProfileIdQuery);
-        if (doctor is null) return NotFound();
-        var resource = DoctorResourceFromEntityAssembler.ToResourceFromEntity(doctor);
-        return Ok(resource);
-    }
-    
     [HttpPost]
     [SwaggerOperation(
         Summary = "Creates a new doctor",

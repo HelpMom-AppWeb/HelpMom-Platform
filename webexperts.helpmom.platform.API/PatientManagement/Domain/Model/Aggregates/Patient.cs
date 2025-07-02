@@ -6,23 +6,32 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Aggrega
 
 public partial class Patient
 {
-    public int Id { get; }
-    public ProfileId ProfileId { get; set; }
-    public string Phone { get; set; }
-    public Baby Baby { get; internal set; }
-    public Doctor AssignedDoctor { get; internal set; }
-    public int AssignedDoctorId { get; set; }
-
-    public Patient()
-    {
-        Phone = string.Empty;
-    }
-
+    public int Id { get; private set; }
+    public Name Name { get; private set; }
+    public EmailAdress Email { get; private set; }
+    public Phone Phone { get; private set; }
+    public Baby Baby { get; private set; }
+    public Doctor AssignedDoctor { get; private set; }
+    public AssignedDoctorId AssignedDoctorId { get; private set; }
+    
     public Patient(CreatePatientCommand command)
     {
-        ProfileId = new ProfileId(command.ProfileId);
-        Phone = command.Phone;
+        ArgumentNullException.ThrowIfNull(command);
+
+        Name = new Name(command.Name);
+        Email = new EmailAdress(command.Email);
+        Phone = new Phone(command.Phone);
         Baby = new Baby(command.BabyName, command.BabyDateOfBirth, command.BabyGender);
-        AssignedDoctorId = command.AssignedDoctorId;
+        AssignedDoctorId = new AssignedDoctorId(command.AssignedDoctorId);
+        AssignDoctor(new Doctor(command.AssignedDoctorId)); 
     }
+    
+    public void AssignDoctor(Doctor doctor)
+    {
+        AssignedDoctor = doctor ?? throw new ArgumentNullException(nameof(doctor));
+        AssignedDoctorId = new AssignedDoctorId(doctor.Id);
+    }
+    
+    
+    
 }
