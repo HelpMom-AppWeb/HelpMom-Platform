@@ -7,5 +7,6 @@ public static class HealthDataResourceFromEntityAssembler
 {
     public static HealthDataResource ToResourceFromEntity(HealthData entity) =>
         new HealthDataResource(entity.Id, entity.HeartRate, entity.Temperature, entity.Weight, entity.OxygenSaturation,
-            entity.PatientId);
+            entity.PatientId, entity.CreatedDate,
+            entity.UpdatedDate);
 }
