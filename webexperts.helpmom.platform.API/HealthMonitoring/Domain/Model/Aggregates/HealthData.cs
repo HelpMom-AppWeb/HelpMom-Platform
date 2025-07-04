@@ -28,7 +28,14 @@ public partial class HealthData
         OxygenSaturation = command.OxygenSaturation;
         PatientId = command.PatientId;
     }
-    
+    public void Update(int heartRate, decimal temperature, decimal weight, int oxygenSaturation)
+    {
+        HeartRate = heartRate;
+        Temperature = temperature;
+        Weight = weight;
+        OxygenSaturation = oxygenSaturation;
+    }
+
     
 
 }
