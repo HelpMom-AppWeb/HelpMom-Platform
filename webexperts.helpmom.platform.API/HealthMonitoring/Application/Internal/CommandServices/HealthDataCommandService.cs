@@ -20,4 +20,17 @@ public class HealthDataCommandService(IHealthMonitoringRepository healthMonitori
 
     }
     
+    public async Task<HealthData?> UpdateAsync(int id, UpdateHealthDataCommand command)
+    {
+        var existing = await healthMonitoringRepository.FindByIdAsync(id);
+        if (existing == null) return null;
+
+        // Solo se actualizan los campos permitidos
+        existing.Update(command.HeartRate, command.Temperature, command.Weight, command.OxygenSaturation);
+
+        await unitOfWork.CompleteAsync();
+        return existing;
+    }
+
+    
 }
