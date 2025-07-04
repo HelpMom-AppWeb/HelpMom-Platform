@@ -82,6 +82,21 @@ public class HealthDataController(IHealthDataCommandService healthDataCommandSer
     }
     
     
-    
+    [HttpPut("{id}")]
+    [SwaggerOperation(
+        Summary = "Updates health data by ID",
+        Description = "Updates health data, excluding patientId and created/updated timestamps.",
+        OperationId = "UpdateHealthData")]
+    [SwaggerResponse(200, "The health data was updated", typeof(HealthDataResource))]
+    [SwaggerResponse(404, "Health data not found")]
+    public async Task<IActionResult> UpdateHealthData(int id, [FromBody] UpdateHealthDataResource resource)
+    {
+        var command = UpdateHealthDataCommandFromResourceAssembler.ToCommand(resource);
+        var result = await healthDataCommandService.UpdateAsync(id, command);
+        if (result == null) return NotFound();
+        var dto = HealthDataResourceFromEntityAssembler.ToResourceFromEntity(result);
+        return Ok(dto);
+    }
+
 
 }

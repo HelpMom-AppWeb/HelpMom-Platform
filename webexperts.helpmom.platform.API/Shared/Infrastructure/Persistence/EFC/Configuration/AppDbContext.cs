@@ -28,6 +28,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<HealthData>().Property(f => f.Weight).IsRequired();
         builder.Entity<HealthData>().Property(f => f.OxygenSaturation).IsRequired();
         builder.Entity<HealthData>().Property(f => f.PatientId).IsRequired();
+        builder.Entity<HealthData>().Property(f => f.CreatedDate).IsRequired(false);
+        builder.Entity<HealthData>().Property(f => f.UpdatedDate).IsRequired(false);
         
         //Medication entity configuration
         builder.Entity<Medication>(med =>
