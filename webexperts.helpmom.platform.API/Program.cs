@@ -5,9 +5,6 @@ using webexperts.helpmom.platform.API.Appointments.Application.Internal.CommandS
 using webexperts.helpmom.platform.API.Appointments.Application.Internal.QueryServices;
 using webexperts.helpmom.platform.API.Appointments.Domain.Repositories;
 using webexperts.helpmom.platform.API.Appointments.Domain.Services;
-using webexperts.helpmom.platform.API.Chat.Domain.Repositories;
-using webexperts.helpmom.platform.API.Chat.Domain.Services;
-using webexperts.helpmom.platform.API.Chat.Infraestructure.Persistence.Repositories;
 using webexperts.helpmom.platform.API.Domain.Repositories;
 using webexperts.helpmom.platform.API.Domain.Services;
 using webexperts.helpmom.platform.API.HealthMonitoring.Application.Internal.CommandServices;
@@ -16,6 +13,11 @@ using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Repositories;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Services;
 using webexperts.helpmom.platform.API.HealthMonitoring.Infrastructure.Persistence.EFC.Repositories;
 using webexperts.helpmom.platform.API.Infraestructure.Persistence.EFC.repositories;
+using webexperts.helpmom.platform.API.PatientManagement.Application.Internal.CommandServices;
+using webexperts.helpmom.platform.API.PatientManagement.Application.Internal.QueryServices;
+using webexperts.helpmom.platform.API.PatientManagement.Domain.Repositories;
+using webexperts.helpmom.platform.API.PatientManagement.Domain.Services;
+using webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persistence.EFC.Repositories;
 using webexperts.helpmom.platform.API.Shared.Domain.Repositories;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -67,9 +69,6 @@ builder.Services.AddScoped<IHealthDataCommandService, HealthDataCommandService>(
 builder.Services.AddScoped<IHealthDataQueryService, HealthDataQueryService>();
 builder.Services.AddScoped<IHealthMonitoringRepository, HealthDataRepository>();
 
-//CHAT 
-
-builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 // Medication 
 builder.Services.AddScoped<IMedicationQueryService, MedicationQueryServices>();
 builder.Services.AddScoped<IMedicationCommandService, MedicationCommandServices>();
@@ -77,6 +76,14 @@ builder.Services.AddScoped<IMedicationRepository, MedicationRepository>();
 
 // Prescription
 builder.Services.AddScoped<IPrescriptionQueryService, PrescriptionQueryService>();
+
+//PatientManagement
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IDoctorQueryService, DoctorQueryService>();
+builder.Services.AddScoped<IDoctorCommandService, DoctorCommandService>();
+builder.Services.AddScoped<IPatientQueryService, PatientQueryService>();
+builder.Services.AddScoped<IPatientCommandService, PatientCommandService>();
 
 var app = builder.Build();
 
