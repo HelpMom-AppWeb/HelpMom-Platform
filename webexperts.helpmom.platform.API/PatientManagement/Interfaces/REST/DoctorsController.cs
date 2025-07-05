@@ -47,4 +47,18 @@ public class DoctorsController(IDoctorCommandService doctorCommandService,
         return CreatedAtAction(nameof(GetDoctorById), 
             new { doctorId = doctor.Id}, doctorResource);
     }
+    
+    [HttpGet] 
+    [SwaggerOperation( 
+        Summary = "Gets a list of all doctors",
+        Description = "Get a list of all doctors")]
+    [SwaggerResponse(StatusCodes.Status200OK, "List of doctors found", typeof(IEnumerable<DoctorResource>))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Doctors not found")]
+    public async Task<IActionResult> GetAllDoctors()
+    {
+        var getAllDoctorsQuery = new GetAllDoctorsQuery();
+        var doctors = await doctorQueryService.Handle(getAllDoctorsQuery);
+        var doctorResources = doctors.Select(DoctorResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(doctorResources);
+    }
 }

@@ -11,4 +11,10 @@ public class DoctorQueryService(IDoctorRepository doctorRepository) : IDoctorQue
     {
         return await doctorRepository.FindByIdAsync(query.Id);
     }
+
+    public async Task<IEnumerable<Doctor>> Handle(GetAllDoctorsQuery query)
+    {
+        return await doctorRepository.ListAsync();
+    } 
+    
 }

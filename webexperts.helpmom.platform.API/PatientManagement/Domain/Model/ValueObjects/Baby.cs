@@ -1,20 +1,16 @@
-using webexperts.helpmom.platform.API.PatientManagement.Domain.Model.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 
-namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Entities;
-
+namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.ValueObjects;
+[Owned]
 public class Baby
 {
-    public int Id { get; }
     public string Name { get; set; }
     public DateTime DateOfBirth { get; set; }
     public EGender Gender { get; set; }
 
-    public Baby()
+    protected Baby()
     {
-        Name = string.Empty;
-        DateOfBirth = new DateTime();
-        Gender = new EGender();
-        
+
     }
     
     public Baby(string babyName, DateTime babyDateOfBirth, string babyGender)

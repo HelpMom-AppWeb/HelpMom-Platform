@@ -11,16 +11,16 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Interfaces.REST;
 [ApiController]
 [Route("api/v1/doctors/{doctorId:int}/patients")]
 [Produces(MediaTypeNames.Application.Json)]
-[Tags("Doctors")]
+[SwaggerTag("Patients registered for a doctor")]
 public class DoctorPatientsController(
     IPatientQueryService patientQueryService) : ControllerBase
 {
     [HttpGet]
-    [SwaggerOperation(
-        Summary = "Gets a list of patients by its Assigned Doctor ID",
-        Description = "Gets a list of patients by its given Assigned Doctor ID")]
-    [SwaggerResponse(StatusCodes.Status200OK, "List of patients found", typeof(IEnumerable<PatientResource>))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "List of patients not found")]
+        [SwaggerOperation(
+            Summary = "Gets a list of patients by its Assigned Doctor ID",
+            Description = "Get a list of patients by given Assigned doctor ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "List of patients found", typeof(IEnumerable<PatientResource>))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Patients not found")]
     public async Task<IActionResult> GetPatientsByDoctorId(
         [FromRoute] int doctorId)
     {

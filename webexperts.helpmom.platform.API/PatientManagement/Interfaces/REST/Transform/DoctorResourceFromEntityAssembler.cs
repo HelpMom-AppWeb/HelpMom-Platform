@@ -7,6 +7,6 @@ public static class DoctorResourceFromEntityAssembler
 {
     public static DoctorResource ToResourceFromEntity(Doctor entity)
     {
-        return new DoctorResource(entity.Id, entity.ProfileId.Id);
+        return new DoctorResource(entity.Id, entity.Name);
     }
 }

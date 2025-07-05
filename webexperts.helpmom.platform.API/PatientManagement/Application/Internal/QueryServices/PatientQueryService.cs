@@ -16,4 +16,5 @@ public class PatientQueryService(IPatientRepository patientRepository) : IPatien
     {
         return await patientRepository.FindByAssignedDoctorIdAsync(query.AssignedDoctorId);
     }
+
 }
