@@ -1,9 +1,9 @@
-using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
+using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using webexperts.helpmom.platform.API.Appointments.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.Domain.Model.Entities;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Model.Aggregates;
-//using webexperts.helpmom.platform.API.Domain.Model.Entities;
+using webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
 namespace webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -85,10 +85,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                     .IsRequired();
             });
         });
-
-
         
-        
+        // PatientManagement Context
+        builder.ApplyPatientManagementConfiguration();
         
         builder.UseSnakeCaseNamingConvention();
         
