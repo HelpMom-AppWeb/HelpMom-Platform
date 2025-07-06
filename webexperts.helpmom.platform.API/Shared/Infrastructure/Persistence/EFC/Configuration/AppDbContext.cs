@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using webexperts.helpmom.platform.API.Appointments.Domain.Model.Aggregates;
+using webexperts.helpmom.platform.API.Chat.Infraestructure.Persistence.Configurations;
 using webexperts.helpmom.platform.API.Domain.Model.Entities;
 using webexperts.helpmom.platform.API.HealthMonitoring.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.PatientManagement.Infrastructure.Persistence.EFC.Configuration.Extensions;
@@ -88,6 +89,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         
         // PatientManagement Context
         builder.ApplyPatientManagementConfiguration();
+        
+        // Chat Context
+        builder.ApplyChatConfiguration();
         
         builder.UseSnakeCaseNamingConvention();
         
