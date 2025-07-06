@@ -4,25 +4,23 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using webexperts.helpmom.platform.API.Chat.Domain.Model.Aggregates;
 using webexperts.helpmom.platform.API.Chat.Domain.Model.ValueObjects;
 
-namespace webexperts.helpmom.platform.Chat.Infrastructure.Persistence.Configurations
+namespace webexperts.helpmom.platform.API.Chat.Infraestructure.Persistence.Configurations
 {
-    public class MessageConfiguration : IEntityTypeConfiguration<Message>
+    public static class ModelBuilderExtensions
     {
-        public void Configure(EntityTypeBuilder<Message> builder)
+        public static void ApplyChatConfiguration(this ModelBuilder builder)
         {
-            builder.ToTable("Messages");
-
-            builder.HasKey(m => m.Id);
-
-            builder.OwnsOne(m => m.From, from =>
+            builder.Entity<Message>().HasKey(m => m.Id);
+            builder.Entity<Message>().Property(m => m.Id).HasColumnName("message_id").ValueGeneratedOnAdd();
+            builder.Entity<Message>().OwnsOne(m => m.From, from =>
             {
-                from.Property(f => f.UserId).HasColumnName("FromUserId");
-                from.Property(f => f.Role).HasColumnName("FromRole");
+                from.Property(f => f.UserId).HasColumnName("from_user_id");
+                from.Property(f => f.Role).HasColumnName("from_role");
             });
 
-            builder.Property(m => m.Text).IsRequired();
-            builder.Property(m => m.Timestramp);
-            builder.Property(m => m.patientId);
+            builder.Entity<Message>().Property(m => m.Text).IsRequired();
+            builder.Entity<Message>().Property(m => m.Timestramp);
+            builder.Entity<Message>().Property(m => m.PatientId).HasColumnName("patient_id");
         }
     }
 }
