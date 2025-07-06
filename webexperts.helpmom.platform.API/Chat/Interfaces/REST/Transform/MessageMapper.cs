@@ -10,12 +10,11 @@ public static class MessageMapper
     {
         return new MessageResource
         {
-            Id = message.Id,
             Text = message.Text,
             Timestamp = message.Timestramp,
-            PatientId = message.patientId,
             FromUserId = message.From.UserId,
-            FromRole = message.From.Role
+            FromRole = message.From.Role,
+            PatientId = message.PatientId
         };
     }
 
