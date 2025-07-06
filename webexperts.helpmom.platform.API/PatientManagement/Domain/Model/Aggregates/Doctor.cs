@@ -5,16 +5,16 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Aggrega
 
 public partial class Doctor
 {
-    public int Id { get; }
-    public ProfileId? ProfileId { get; set; }
+    public int Id { get; private set;}
+    public string Name { get; set;}
     
-    public Doctor()
+    protected Doctor()
     {
         
     }
 
     public Doctor(CreateDoctorCommand command) : this()
     {
-        ProfileId = new ProfileId(command.ProfileId);
+        Name = command.Name;
     }
 }

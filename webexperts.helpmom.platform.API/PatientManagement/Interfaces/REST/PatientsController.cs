@@ -31,21 +31,6 @@ public class PatientsController(IPatientCommandService patientCommandService,
         return Ok(resource);
     }
     
-    [HttpGet("{profileId:int}")]
-    [SwaggerOperation(
-        Summary = "Gets a patient by its profile ID",
-        Description = "Get a patient by given profile ID.")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Patient found", typeof(PatientResource))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "Patient not found")]
-    public async Task<IActionResult> GetPatientByProfileId(int profileId)
-    {
-        var getPatientByProfileIdQuery = new GetPatientByProfileIdQuery(profileId);
-        var patient = await patientQueryService.Handle(getPatientByProfileIdQuery);
-        if (patient is null) return NotFound();
-        var resource = PatientResourceFromEntityAssembler.ToResourceFromEntity(patient);
-        return Ok(resource);
-    }
-    
     [HttpPost]
     [SwaggerOperation(
         Summary = "Creates a new patient",

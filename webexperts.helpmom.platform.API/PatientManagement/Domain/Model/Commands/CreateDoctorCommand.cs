@@ -1,3 +1,3 @@
 namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Commands;
 
-public record CreateDoctorCommand(int ProfileId);
+public record CreateDoctorCommand(string Name);

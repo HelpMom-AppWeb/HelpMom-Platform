@@ -31,21 +31,6 @@ public class DoctorsController(IDoctorCommandService doctorCommandService,
         return Ok(resource);
     }
     
-    [HttpGet("{profileId:int}")]
-    [SwaggerOperation(
-        Summary = "Gets a doctor by its profile ID",
-        Description = "Get a doctor by given profile ID.")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Doctor found", typeof(DoctorResource))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "Doctor not found")]
-    public async Task<IActionResult> GetDoctorByProfileId(int profileId)
-    {
-        var getDoctorByProfileIdQuery = new GetDoctorByProfileIdQuery(profileId);
-        var doctor = await doctorQueryService.Handle(getDoctorByProfileIdQuery);
-        if (doctor is null) return NotFound();
-        var resource = DoctorResourceFromEntityAssembler.ToResourceFromEntity(doctor);
-        return Ok(resource);
-    }
-    
     [HttpPost]
     [SwaggerOperation(
         Summary = "Creates a new doctor",
@@ -61,5 +46,19 @@ public class DoctorsController(IDoctorCommandService doctorCommandService,
         var doctorResource = DoctorResourceFromEntityAssembler.ToResourceFromEntity(doctor);
         return CreatedAtAction(nameof(GetDoctorById), 
             new { doctorId = doctor.Id}, doctorResource);
+    }
+    
+    [HttpGet] 
+    [SwaggerOperation( 
+        Summary = "Gets a list of all doctors",
+        Description = "Get a list of all doctors")]
+    [SwaggerResponse(StatusCodes.Status200OK, "List of doctors found", typeof(IEnumerable<DoctorResource>))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Doctors not found")]
+    public async Task<IActionResult> GetAllDoctors()
+    {
+        var getAllDoctorsQuery = new GetAllDoctorsQuery();
+        var doctors = await doctorQueryService.Handle(getAllDoctorsQuery);
+        var doctorResources = doctors.Select(DoctorResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(doctorResources);
     }
 }

@@ -9,9 +9,10 @@ public static class PatientResourceFromEntityAssembler
     {
         return new PatientResource(
             entity.Id,
-            entity.ProfileId.Id,
+            entity.Name,
+            entity.Email,
             entity.Phone,
             BabyResourceFromEntityAssembler.ToResourceFromEntity(entity.Baby),
-            DoctorResourceFromEntityAssembler.ToResourceFromEntity(entity.AssignedDoctor));
+            entity.AssignedDoctorId);
     }
 }

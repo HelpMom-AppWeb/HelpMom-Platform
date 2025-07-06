@@ -9,7 +9,8 @@ public static class CreatePatientCommandFromResourceAssembler
         CreatePatientResource resource)
     {
         return new CreatePatientCommand(
-            resource.ProfileId,
+            resource.Name,
+            resource.Email,
             resource.Phone,
             resource.AssignedDoctorId,
             resource.BabyName,

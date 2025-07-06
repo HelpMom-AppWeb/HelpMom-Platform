@@ -1,5 +1,4 @@
 using webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Commands;
-using webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Entities;
 using webexperts.helpmom.platform.API.PatientManagement.Domain.Model.ValueObjects;
 
 namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Aggregates;
@@ -7,20 +6,21 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.Aggrega
 public partial class Patient
 {
     public int Id { get; }
-    public ProfileId ProfileId { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
     public string Phone { get; set; }
     public Baby Baby { get; internal set; }
-    public Doctor AssignedDoctor { get; internal set; }
     public int AssignedDoctorId { get; set; }
 
-    public Patient()
+    protected Patient()
     {
-        Phone = string.Empty;
+
     }
 
     public Patient(CreatePatientCommand command)
     {
-        ProfileId = new ProfileId(command.ProfileId);
+        Name = command.Name;
+        Email = command.Email;
         Phone = command.Phone;
         Baby = new Baby(command.BabyName, command.BabyDateOfBirth, command.BabyGender);
         AssignedDoctorId = command.AssignedDoctorId;

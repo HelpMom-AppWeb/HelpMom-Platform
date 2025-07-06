@@ -8,6 +8,6 @@ public static class CreateDoctorCommandFromResourceAssembler
     public static CreateDoctorCommand ToCommandFromResource(CreateDoctorResource resource)
     {
         return new CreateDoctorCommand(
-            resource.ProfileId);
+            resource.Name);
     }
 }

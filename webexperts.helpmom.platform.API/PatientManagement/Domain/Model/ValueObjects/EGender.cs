@@ -3,5 +3,6 @@ namespace webexperts.helpmom.platform.API.PatientManagement.Domain.Model.ValueOb
 public enum EGender
 {
     Male,
-    Female
+    Female,
+    Other
 }
