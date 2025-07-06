@@ -5,17 +5,11 @@ using webexperts.helpmom.platform.API.Chat.Domain.Repositories;
 namespace webexperts.helpmom.platform.API.Chat.Application.Internal.QueryServices;
 
 
-public class GetMessagesByPatientIdQueryService
+public class GetMessagesByPatientIdQueryService(IMessageRepository messageRepository)
 {
-    private readonly IMessageRepository _messageRepository;
-
-    public GetMessagesByPatientIdQueryService(IMessageRepository messageRepository)
-    {
-        _messageRepository = messageRepository;
-    }
 
     public async Task<IEnumerable<Message>> Handle(GetMessagesByPatientIdQuery query)
     {
-        return await _messageRepository.ListByPatientIdAsync(query.PatientId);
+        return await messageRepository.ListByPatientIdAsync(query.PatientId);
     }
 }
