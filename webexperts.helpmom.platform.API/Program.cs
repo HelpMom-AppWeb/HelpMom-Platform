@@ -5,6 +5,11 @@ using webexperts.helpmom.platform.API.Appointments.Application.Internal.CommandS
 using webexperts.helpmom.platform.API.Appointments.Application.Internal.QueryServices;
 using webexperts.helpmom.platform.API.Appointments.Domain.Repositories;
 using webexperts.helpmom.platform.API.Appointments.Domain.Services;
+using webexperts.helpmom.platform.API.Chat.Application.Internal.CommandServices;
+using webexperts.helpmom.platform.API.Chat.Application.Internal.QueryServices;
+using webexperts.helpmom.platform.API.Chat.Domain.Repositories;
+using webexperts.helpmom.platform.API.Chat.Domain.Services;
+using webexperts.helpmom.platform.API.Chat.Infraestructure.Persistence.Repositories;
 using webexperts.helpmom.platform.API.Domain.Repositories;
 using webexperts.helpmom.platform.API.Domain.Services;
 using webexperts.helpmom.platform.API.HealthMonitoring.Application.Internal.CommandServices;
@@ -84,6 +89,12 @@ builder.Services.AddScoped<IDoctorQueryService, DoctorQueryService>();
 builder.Services.AddScoped<IDoctorCommandService, DoctorCommandService>();
 builder.Services.AddScoped<IPatientQueryService, PatientQueryService>();
 builder.Services.AddScoped<IPatientCommandService, PatientCommandService>();
+
+//Chat
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<MessageDomainService>();
+builder.Services.AddScoped<GetMessagesByPatientIdQueryService>();
+builder.Services.AddScoped<CreateMessageCommandService>();
 
 var app = builder.Build();
 
