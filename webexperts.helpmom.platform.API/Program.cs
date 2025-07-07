@@ -30,6 +30,11 @@ using webexperts.helpmom.platform.API.Shared.Infrastructure.Persistence.EFC.Repo
 
 var builder = WebApplication.CreateBuilder(args);
 
+AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+{
+    Console.WriteLine("🔴 Unhandled exception: " + e.ExceptionObject?.ToString());
+};
+
 // Add services to the container.
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
