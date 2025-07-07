@@ -121,4 +121,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+Console.WriteLine(">>> App is about to start");
 app.Run();
+Console.WriteLine(">>> App has exited");
